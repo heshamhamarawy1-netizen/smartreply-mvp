@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SmartReply.ai MVP</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    form {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    input[type="text"] {
+      width: 400px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .comment-card {
+      background-color: white;
+      padding: 15px;
+      margin: 10px auto;
+      border-radius: 8px;
+      max-width: 700px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .POSITIVE {
+      border-left: 5px solid #28a745;
+    }
+    .NEGATIVE {
+      border-left: 5px solid #dc3545;
+    }
+    .ERROR {
+      border-left: 5px solid #ffc107;
+    }
+    b {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>SmartReply.ai Dashboard</h1>
+
+  <!-- Form لإدخال رابط الفيديو -->
+  <form method="POST">
+    <input type="text" name="video_url" placeholder="Enter YouTube video URL">
+    <button type="submit">Analyze</button>
+  </form>
+
+  <ul>
+    {% for item in data %}
+      <li class="comment-card {{ item.label }}">
+        <b>Comment:</b> {{ item.comment }} <br>
+        <b>Type:</b> {{ item.label }} <br>
+        <b>Suggested Reply:</b> {{ item.reply }}
+      </li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
+
+
